@@ -7,14 +7,15 @@
     transform: scale(1.02);
     background-color: black;
     color: white;
-    transition: 0.6s;
+    transition: 0.4s;
 }
-#skilldiv{
+#skill{
     font-size: xx-large;
     /* padding: 7px; */
     margin-left: 10%;
 }
-#skilldiv:hover{
-    border-bottom: 2px solid black;
+#skill:hover{
+    border-bottom: 5px solid black;
+    border-radius: 3px;
     
 }
