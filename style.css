@@ -1,0 +1,10 @@
+.con{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    border-radius: 15px;
+}
+.skill:hover{
+    transform: scale(1.02);
+    background-color: black;
+    color: white;
+}
