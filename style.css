@@ -3,6 +3,9 @@
     font-size: 20px;
     border-radius: 15px;
 }
+.nav-link:hover{
+    border-bottom: 3px solid white ;
+}
 .skill:hover{
     transform: scale(1.02);
     background-color: black;
@@ -18,4 +21,33 @@
     border-bottom: 5px solid black;
     border-radius: 3px;
     
+}
+.con{
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    font-size: 20px;
+    border-radius: 15px;
+}
+.project:hover{
+    transform: scale(1.02);
+    background-color: black;
+    color: white;
+    transition: 0.4s;
+}
+#project{
+    font-size: xx-large;
+    /* padding: 7px; */
+    margin-left: 10%;
+}
+#project:hover{
+    border-bottom: 5px solid black;
+    border-radius: 3px; 
+}
+.proimg{
+    background-color: grey;
+    padding: 5px;
+    border-radius: 5px;
+}
+.proimg:hover{
+    background-color: aliceblue;
+
 }
