@@ -12,6 +12,9 @@
 .nav-link:hover{
     border-bottom: 3px solid white ;
 }
+.skill{
+    border: 1.6px solid black;
+}
 .skill:hover{
     transform: scale(1.02);
     background-color: black;
@@ -25,11 +28,18 @@
 }
 #skill:hover{
     border-bottom: 5px solid black;
-    border-radius: 3px;
-    
-    
+    border-radius: 3px;    
 }
+.proname{
+    border-bottom: 3px solid black;
+}
+.proname:hover{
+    border-bottom: 3px solid white;
 
+}
+.project{
+    border: 2px solid black;
+}
 .project:hover{
     transform: scale(1.02);
     background-color: black;
