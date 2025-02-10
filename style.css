@@ -1,7 +1,13 @@
+/* Aqua Splash Gradient Background */
+/* body {
+    background: linear-gradient(135deg, #186693, #80d0c7);
+} */
 .con{
     /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
     font-size: 20px;
+    border: 2px solid black;
     border-radius: 15px;
+    background-color: whitesmoke;
 }
 .nav-link:hover{
     border-bottom: 3px solid white ;
@@ -21,12 +27,9 @@
     border-bottom: 5px solid black;
     border-radius: 3px;
     
+    
 }
-.con{
-    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
-    font-size: 20px;
-    border-radius: 15px;
-}
+
 .project:hover{
     transform: scale(1.02);
     background-color: black;
@@ -41,13 +44,4 @@
 #project:hover{
     border-bottom: 5px solid black;
     border-radius: 3px; 
-}
-.proimg{
-    background-color: grey;
-    padding: 5px;
-    border-radius: 5px;
-}
-.proimg:hover{
-    background-color: aliceblue;
-
 }
