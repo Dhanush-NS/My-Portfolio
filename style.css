@@ -9,6 +9,9 @@
     border-radius: 15px;
     background-color: whitesmoke;
 }
+#name{
+    color:linear-gradient(135deg, #186693, #80d0c7) ;
+}
 .nav-link:hover{
     border-bottom: 3px solid white ;
 }
