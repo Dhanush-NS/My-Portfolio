@@ -12,11 +12,17 @@
 #name{
     color:linear-gradient(135deg, #186693, #80d0c7) ;
 }
+.about{
+    border: 2px solid black;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #a5c5d8, #80d0c7);
+}
 .nav-link:hover{
     border-bottom: 3px solid white ;
 }
 .skill{
-    border: 1.6px solid black;
+    border: 1.6px solid rgb(223, 218, 218);
+    
 }
 .skill:hover{
     transform: scale(1.02);
@@ -38,7 +44,6 @@
 }
 .proname:hover{
     border-bottom: 3px solid white;
-
 }
 .project{
     border: 2px solid black;
