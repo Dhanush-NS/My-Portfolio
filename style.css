@@ -13,9 +13,12 @@
     color:linear-gradient(135deg, #186693, #80d0c7) ;
 }
 .about{
-    border: 2px solid black;
-    border-radius: 10px;
+    /* border: 2px solid black;
+    border-radius: 10px; */
     background: linear-gradient(135deg, #a5c5d8, #80d0c7);
+    align-items: center;
+    text-align: center;
+    /* padding: 20px; */
 }
 .nav-link:hover{
     border-bottom: 3px solid white ;
@@ -32,7 +35,7 @@
 }
 #skill{
     font-size: xx-large;
-    /* padding: 7px; */
+    /* padding: 17px; */
     margin-left: 10%;
 }
 #skill:hover{
