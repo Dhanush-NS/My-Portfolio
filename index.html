@@ -3,182 +3,789 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dhanush N S - Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Font Awesome for skill icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles and Custom Animations */
+        :root {
+            --primary-color: #186693;
+            --secondary-color: #80d0c7;
+            --accent-color: #f5f5f5;
+            --text-color: #333;
+            --dark-color: #1e1e1e;
+            --border-radius: 10px;
+            --transition-speed: 0.4s;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #e4e9f0);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Star Animation Background */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -2;
+            background-color: rgba(0, 0, 0, 0.85);
+            pointer-events: none;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: white;
+            border-radius: 50%;
+            animation: starFloat linear infinite;
+            opacity: 0; /* Start with 0 opacity */
+        }
+        
+        @keyframes starFloat {
+            0% {
+                transform: translateY(100vh) scale(0.5); /* Start from the bottom */
+                opacity: 0;
+            }
+            10% {
+                opacity: 1; /* Fade in quickly */
+            }
+            90% {
+                opacity: 1; /* Stay visible */
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.5); /* Move upwards and scale up */
+                opacity: 0; /* Fade out */
+            }
+        }
+        /* Background Animation Effects */
+        body:before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 5% 15%, rgba(128, 208, 199, 0.1) 0%, transparent 30%),
+                        radial-gradient(circle at 95% 85%, rgba(24, 102, 147, 0.1) 0%, transparent 30%);
+            z-index: -1;
+            animation: backgroundPulse 15s infinite alternate;
+        }
+        
+        @keyframes backgroundPulse {
+            0% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+        
+        /* Section Heading Styles */
+        .section-heading {
+            font-size: 2.5rem;
+            margin-left: 10%;
+            padding-bottom: 0.3rem;
+            display: inline-block;
+            position: relative;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+            transition: width 0.4s ease;
+        }
+        
+        .section-heading:hover::after, .section-active::after {
+            width: 100%;
+        }
+        
+        /* Navbar Styling */
+        .navbar {
+            background: rgba(33, 37, 41, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-nav {
+            margin-left: auto;
+        }
+        
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            position: relative;
+            margin: 0 0.3rem;
+            padding: 0.5rem 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .navbar-nav .nav-link:hover::after {
+            width: 80%;
+        }
+        
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, #a5c5d8, #80d0c7);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        .about:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .about:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), transparent);
+            transform: rotate(45deg);
+            pointer-events: none;
+            transition: all 0.5s ease;
+        }
+        
+        .about:hover:before {
+            top: -40%;
+            left: -40%;
+        }
+        
+        #name {
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            padding: 0 0.5rem;
+            font-size: 1.3em;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .resume .btn {
+            background: linear-gradient(45deg, var(--primary-color), var(--dark-color));
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .resume .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .resume .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .resume .btn:hover::after {
+            left: 100%;
+        }
+        
+        /* Skills Section */
+        .skill {
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            height: 100%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all var(--transition-speed) ease;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: white;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .skill:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: var(--dark-color);
+            color: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill .card-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .skill:hover .card-title {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .skill:hover .skill-icon {
+            color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+        
+        .skill-item {
+            display: inline-block;
+            margin: 0.5rem;
+            text-align: center;
+        }
+        
+        .skill-item i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-item:hover i {
+            transform: scale(1.2);
+        }
+        
+        /* Projects Section */
+        .project {
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            height: 100%;
+            transition: all var(--transition-speed) ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: var(--dark-color);
+            color: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .proname {
+            position: relative;
+            padding-bottom: 0.3rem;
+            transition: all var(--transition-speed) ease;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .proname::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .project:hover .proname {
+            color: var(--secondary-color);
+        }
+        
+        .project:hover .proname::after {
+            background: var(--secondary-color);
+        }
+        
+        .proimg {
+            transition: all 0.3s ease;
+            margin-left: 0.5rem;
+            opacity: 0.7;
+        }
+        
+        .proimg:hover {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+        
+        /* Contact Section */
+        .con {
+            border-radius: var(--border-radius);
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            transition: all var(--transition-speed) ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .con:hover {
+            transform: translateY(-5px);
+        }
+        
+        .con h3 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .con a {
+            margin: 0 0.5rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .con a:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* More Projects Link */
+        .more-projects {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .more-projects::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+        
+        .more-projects:hover::before {
+            top: 0;
+        }
+        
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .section-heading {
+                font-size: 1.8rem;
+                margin-left: 5%;
+            }
+            
+            .about {
+                padding: 1.5rem;
+                text-align: left;
+            }
+            
+            .about p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+            
+            .about br {
+                display: none;
+            }
+            
+            .skill, .project {
+                padding: 1.2rem;
+            }
+            
+            .con {
+                padding: 1.5rem;
+            }
+            
+            .con h3 {
+                font-size: 1.5rem;
+            }
+            
+            .con h4 {
+                font-size: 1.2rem;
+            }
+            
+            .con p {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-heading {
+                font-size: 1.5rem;
+                margin-left: 0;
+                text-align: center;
+                display: block;
+            }
+            
+            #skill, #project {
+                margin-left: 0;
+                text-align: center;
+                display: block;
+            }
+            
+            .about p {
+                font-size: 0.9rem;
+            }
+            
+            .skill .card-title, .project .card-title {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Stars Container -->
+    <div class="stars-container" id="stars-container"></div>
+    
     <nav class="sticky-top">
-    <div class="navbar navbar-expand-lg navbar-dark bg-dark">
-         <!-- Toggle Button for Mobile -->
-         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- Navbar Links -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#aboutme">About Me</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="#skills">Skills</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="#project">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="#contact">Contact</a>
-                </li>
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <!-- Toggle Button for Mobile -->
+            <div class="container">
+                <!-- Removed the "DN" brand -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Navbar Links -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#aboutme">About Me</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#skills">Skills</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#projects">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="aboutme" class="py-5">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="section-heading section-active">About Me</h2>
+            <div class="about" data-aos="zoom-in" data-aos-delay="300">
+                <p>I am <span id="name">Dhanush N S</span>, a <b>Final Year Engineering Student in City Engineering College</b>, with a passion for web development and software engineering.
+                I enjoy building efficient and user-friendly applications using <b>Python and Django</b>.
                 
-            </ul>
+                I have worked on projects like a <b>Library Management System</b> and a <b>distraction-free learning platform Called Levac</b> to enhance the learning experience. I am always eager to learn new technologies, solve problems, and improve my coding skills.
+                
+                I strive to create innovative solutions and look forward to opportunities that help me grow as a developer.</p>
+                <div class="resume btn-group m-2">
+                    <a class="btn btn-dark rounded" target="_blank" href="Dhanush_Resume.pdf">My Resume</a>
+                </div>
+            </div>
         </div>
-    </div>
-</nav>
+    </section>
 
-
-
-<section id="aboutme" ></section>
-<div class="mt-5">
-<span id="skill" >About Me</span>
-<!-- <img class="float-end m- rounded-circle" src="dhanush.jpg" alt="My photo" height="180px" width="180px"> -->
-
-<div class=" about container-fluid p-5 rounded">
-    
-    <p>I am <span id="name"><b>Dhanush N S</b></span>, a <b>Final Year Engineering Student in City Engineering College</b>, with a passion for web development and <br> software engineering.
-    I enjoy building efficient and user-friendly applications using <b>Python and Django</b>. <br>
-
-    I have worked on projects like a <b>Library Management System</b> and a <b>distraction-free learning platform Called Levac</b> <br> to enhance the learning experience. I am always eager to learn new technologies, solve problems, and improve my coding skills. <br>
-    
-    I strive to create innovative solutions and look forward to opportunities that help me grow as a developer.</p> <br>
-    <div class=" resume btn-group m-2 ">
-        <a class="btn btn-dark rounded " target="_blank" href="Dhanush_Resume.pdf">My Resume</a><br>
+    <section id="skills" class="py-5">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="section-heading">Skills</h2>
+            <div class="row g-4">
+                <div class="col-md-3 col-sm-6" data-aos="flip-left" data-aos-delay="100">
+                    <div class="skill card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Languages</h4>
+                            <div class="skill-item">
+                                <i class="fab fa-python skill-icon" title="Python"></i>
+                                <p>Python</p>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-database skill-icon" title="SQL"></i>
+                                <p>SQL</p>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-js skill-icon" title="JavaScript"></i>
+                                <p>JavaScript</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6" data-aos="flip-left" data-aos-delay="200">
+                    <div class="skill card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Web Development</h4>
+                            <div class="skill-item">
+                                <i class="fab fa-html5 skill-icon" title="HTML5"></i>
+                                <p>HTML</p>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-css3-alt skill-icon" title="CSS3"></i>
+                                <p>CSS</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6" data-aos="flip-left" data-aos-delay="300">
+                    <div class="skill card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Frameworks & Libraries</h4>
+                            <div class="skill-item">
+                                <i class="fab fa-python skill-icon" title="Django"></i>
+                                <p>Django</p>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-bootstrap skill-icon" title="Bootstrap"></i>
+                                <p>Bootstrap</p>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-table skill-icon" title="Pandas"></i>
+                                <p>Pandas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6" data-aos="flip-left" data-aos-delay="400">
+                    <div class="skill card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Database Management</h4>
+                            <div class="skill-item">
+                                <i class="fas fa-database skill-icon" title="MySQL"></i>
+                                <p>MySQL</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6" data-aos="flip-left" data-aos-delay="500">
+                    <div class="skill card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Version Control</h4>
+                            <div class="skill-item">
+                                <i class="fab fa-git-alt skill-icon" title="Git"></i>
+                                <p>Git</p>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-github skill-icon" title="GitHub"></i>
+                                <p>GitHub</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-</div>
-</div>
+    </section>
 
+    <section id="projects" class="py-5">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="section-heading">Projects</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <span class="proname">Levac</span> 
+                                <a title="project link" class="proimg" target="_blank" href="https://github.com/Dhanush-NS/LEVAC/tree/main/finalproject">
+                                    <img src="maximize2.png" alt="link" width="20px" height="20px">
+                                </a>
+                            </h4>
+                            <p>
+                                <li>My project is a <b>distraction-free learning platform</b> where users can access <b>YouTube tutorials, coding resources, and a built-in code editor.</b></li>
+                                <li>It integrates <b>Gemini-assistant</b> for doubt-solving and basic <b>Hacker Rank</b> problems for practice.</li>
+                                <li>Tech Stack: <b>Python, Django, HTML, CSS, Javascript, Bootstrap and MySQL.</b></li>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <span class="proname">Library Mgmt System</span> 
+                                <a title="project link" class="proimg" target="_blank" href="https://github.com/Dhanush-NS/Library-Managment-System/tree/main/Library_management_system">
+                                    <img src="maximize2.png" alt="link" width="20px" height="20px">
+                                </a>
+                            </h4>
+                            <p>
+                                <li>A web-based <b>Library Management System</b> that enables users to <b>manage books, track borrow/return records, and handle user authentication.</b></li>
+                                <li>It features <b>book search, fine calculation</b>, and a <b>responsive UI</b> for easy access.</li>
+                                <li>Tech Stack: <b>Python, Django, MySQL, HTML, CSS, JavaScript, Bootstrap.</b></li>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <span class="proname">Dhanush's Portfolio</span> 
+                                <a title="project link" class="proimg" target="_blank" href="https://github.com/Dhanush-NS/Dhanush-Portfolio">
+                                    <img src="maximize2.png" alt="link" width="20px" height="20px">
+                                </a>
+                            </h4>
+                            <p>
+                                <li>A Basic <b>Dhanush's Portfolio</b> that enables users to <b>Chat with him through email related to projects or to collaborate with him.</b></li>
+                                <li>He provided the social media links like <b>Linkedin, Instagram, Github and Youtube</b></li>
+                                <li>Tech Stack: <b>HTML, CSS.</b></li>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4" data-aos="fade-up">
+                <p class="more-projects text-center bg-dark text-white rounded p-3">
+                    For More Projects visit my <b>Github</b>
+                    <a target="_blank" href="https://github.com/Dhanush-NS?tab=overview&from=2025-02-01&to=2025-02-09">
+                        <img src="maximize2.png" alt="project link" height="25px" width="25px">
+                    </a>
+                </p>
+            </div>
+        </div>
+    </section>
 
-<section id="skills"></section>
-<br>
-<span id="skill" >Skills</span>
-<div class=" container p-4">
-    <div class="row g-3">
-        <div class="col-md-3">
-            <div class="skill card">
-                <div class="card-body">
-                    <h4 class="card-title">Languages</h4>
-                    <p>Python, SQL, Javascript</p>
+    <section id="contact" class="py-5">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
+            <div class="con" data-aos="zoom-in">
+                <h3>Stay Connected</h3>
+                <h4>Bengaluru Karnataka, India</h4>
+                <p><b>nsdhanush5@gmail.com</b></p>
+                <p><b>(+91) 6362011611</b></p>
+                <div class="social-icons my-3">
+                    <a target="_blank" href="https://www.instagram.com/dhanush197_/">
+                        <img src="icons8-instagram-50.png" alt="instagram">
+                    </a>
+                    <a target="_blank" href="https://www.linkedin.com/in/dhanush-n-s-35762b287/">
+                        <img src="icons8-linked-in-50.png" alt="LinkedIn">
+                    </a>
+                    <a target="_blank" href="https://github.com/dhanushns2003">
+                        <img src="icons8-github-50.png" alt="Github">
+                    </a>
+                    <a target="_blank" href="https://www.youtube.com/@CodingLines">
+                        <img src="icons8-youtube-50.png" alt="Youtube">
+                    </a>
+                </div>
+                <p>&copy; 2023 portfolio</p>
+                <p>Developed by &#174; Dhanush with ❤️ and passion</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                easing: 'ease-out-back',
+                once: true
+            });
+            
+            // Add active class to section headings when scrolled into view
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
                     
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="skill card">
-                <div class="card-body">
-                    <h4 class="card-title">Web Development</h4>
-                    <p>HTML, CSS</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="skill card">
-                <div class="card-body">
-                    <h4 class="card-title">Frameworks & Libraries</h4>
-                    <p>Django, Bootstrap, Pandas </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="skill card">
-                <div class="card-body">
-                    <h4 class="card-title">Database Management</h4>
-                    <p>MySQL</p>
-                </div>
-            </div>
-        </div>
-        
-        
-        <div class="col-md-3">
-            <div class="skill card">
-                <div class="card-body">
-                    <h4 class="card-title">Version Control</h4>
-                    <p>Git, Github</p>
-                    
-                </div>
-            </div>
-        </div>
-        
-
-
-    </div>
-</div>
-
-
-<section id="projects"></section>
-<span id="project" >Projects</span>
-<div class=" container p-4">
-    <div class="row g-3">
-        <div class="col-md-4">
-            <div class="project card">
-                <div class="card-body">
-                    <h4 class="card-title"><span class="proname">Levac</span> <a title="project link" class="proimg" target="_blank"  href="https://github.com/Dhanush-NS/LEVAC/tree/main/finalproject"><img src="maximize2.png" alt="link" width="20px" height="20px"></a></h4>
-                    <p><li>My project is a <b>distraction-free learning platform</b> where users can access <b>YouTube tutorials, coding resources, and a built-in code editor.</b> </li>
-                    <li>It integrates <b>Gemini-assistant</b> for doubt-solving and basic <b>Hacker Rank</b> problems problems for practice.</li>
-                    <li>Tech Stack: <b> Python, Django, HTML, CSS, Javascript, Bootstrap and MySQL.</b> </li></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="project card">
-                <div class="card-body">
-                    <h4 class="card-title"><span class="proname">Library Managment System</span> <a title="project link" class="proimg" target="_blank" href="https://github.com/Dhanush-NS/Library-Managment-System/tree/main/Library_management_system"><img src="maximize2.png" alt="link" width="20px" height="20px"></a></h4>
-                    <p><li>A web-based <b>Library Management System</b> that enables users to <b>manage books, track borrow/return records, and handle user authentication.</b> </li>
-                    <li>It features <b>book search, fine calculation</b>, and a <b>responsive UI</b> for easy access.</li>
-                    <li>Tech Stack:<b> Python, Django, MySQL, HTML, CSS, JavaScript, Bootstrap.</b> </li></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="project card">
-                <div class="card-body">
-                    <h4 class="card-title"><span class="proname">Dhanush's Portfolio</span> <a title="project link" class="proimg" target="_blank" href="https://github.com/Dhanush-NS/Dhanush-Portfolio"><img src="maximize2.png" alt="link" width="20px" height="20px"></a></h4>
-                    <p><li>A Basic <b>Dhanush's Portfolio</b> that enables users to <b>Chat with him through email relateed to projects or to collaborate with him.</b> </li>
-                    <li>He provided the social media links like <b>Linkedin, Instagram, Github and Youtube</b></li>
-                    <li>Tech Stack:<b>HTML, CSS.</b> </li><br><br></p>
-                </div>
-            </div>
-        </div>
-        <p class="text-center bg-dark text-white rounded p-2">For More Projects visit my <b>Github </b><a target="_blank" href="https://github.com/Dhanush-NS?tab=overview&from=2025-02-01&to=2025-02-09"><img src="maximize2.png" alt="project link" height="25px" width="25px"></a></p>
-    </div>
-</div>
-
-
-
-
-<section id="contact"></section>
-<div class="m-2">
-    <div class="con container-fluid mt-2   text-center pt-4 pb-2">
-    <h3>Stay Connected</h3>
-    <h4>Bengaluru Karnataka, India</h4>
-    <p><b>nsdhanush5@gmail.com</b></p>
-    <p><b>(+91) 6362011611</b></p>
-    <a target="_blank" href="https://www.instagram.com/dhanush197_/"><img src="icons8-instagram-50.png" alt="insatgram"></a>
-    <a target="_blank" href="https://www.linkedin.com/in/dhanush-n-s-35762b287/"><img src="icons8-linked-in-50.png"alt="LinkedIn"></a>
-    <a target="_blank" href="https://github.com/dhanushns2003"><img src="icons8-github-50.png" alt="Github"></a>
-    <a target="_blank" href="https://www.youtube.com/@CodingLines"><img src="icons8-youtube-50.png" alt="Youtube"></a><br>
-    <p> &copy; 2023 portfolio</p>
-    <p> Developed by &#174 Dhanush with ❤️ and passion</p>
-</div>
-</div>
-
-
-
-
-
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            function createStars() {
+                const starsContainer = document.getElementById('stars-container');
+                const starCount = 200; // Increase the number of stars
+            
+                for (let i = 0; i < starCount; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'star';
+            
+                    // Random star size between 1px and 3px
+                    const size = Math.random() * 2 + 1;
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+            
+                    // Random position
+                    const posX = Math.random() * 100;
+                    star.style.left = `${posX}%`;
+            
+                    // Random starting position from middle to bottom
+                    const posY = Math.random() * 100 + 50;
+                    star.style.top = `${posY}%`;
+            
+                    // Animation duration between 5 and 15 seconds (faster animation)
+                    const duration = Math.random() * 10 + 5;
+                    star.style.animationDuration = `${duration}s`;
+            
+                    // Random delay
+                    const delay = Math.random() * 10;
+                    star.style.animationDelay = `${delay}s`;
+            
+                    // Add star to container
+                    starsContainer.appendChild(star);
+                }
+            }
+            
+            // Call the function to create stars
+            createStars();
+        });
+    </script>
 </body>
 </html>
-
-
