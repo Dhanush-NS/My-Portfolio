@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +23,7 @@
             --border-radius: 10px;
             --transition-speed: 0.4s;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #f5f7fa, #e4e9f0);
@@ -31,7 +32,7 @@
             overflow-x: hidden;
             position: relative;
         }
-        
+
         /* Star Animation Background */
         .stars-container {
             position: fixed;
@@ -44,7 +45,7 @@
             background-color: rgba(0, 0, 0, 0.85);
             pointer-events: none;
         }
-        
+
         .star {
             position: absolute;
             width: 2px;
@@ -52,25 +53,35 @@
             background-color: white;
             border-radius: 50%;
             animation: starFloat linear infinite;
-            opacity: 0; /* Start with 0 opacity */
+            opacity: 0;
+            /* Start with 0 opacity */
         }
-        
+
         @keyframes starFloat {
             0% {
-                transform: translateY(100vh) scale(0.5); /* Start from the bottom */
+                transform: translateY(100vh) scale(0.5);
+                /* Start from the bottom */
                 opacity: 0;
             }
+
             10% {
-                opacity: 1; /* Fade in quickly */
+                opacity: 1;
+                /* Fade in quickly */
             }
+
             90% {
-                opacity: 1; /* Stay visible */
+                opacity: 1;
+                /* Stay visible */
             }
+
             100% {
-                transform: translateY(-10vh) scale(1.5); /* Move upwards and scale up */
-                opacity: 0; /* Fade out */
+                transform: translateY(-10vh) scale(1.5);
+                /* Move upwards and scale up */
+                opacity: 0;
+                /* Fade out */
             }
         }
+
         /* Background Animation Effects */
         body:before {
             content: '';
@@ -80,22 +91,23 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(circle at 5% 15%, rgba(128, 208, 199, 0.1) 0%, transparent 30%),
-                        radial-gradient(circle at 95% 85%, rgba(24, 102, 147, 0.1) 0%, transparent 30%);
+                radial-gradient(circle at 95% 85%, rgba(24, 102, 147, 0.1) 0%, transparent 30%);
             z-index: -1;
             animation: backgroundPulse 15s infinite alternate;
         }
-        
+
         @keyframes backgroundPulse {
             0% {
                 opacity: 0.7;
                 transform: scale(1);
             }
+
             100% {
                 opacity: 1;
                 transform: scale(1.2);
             }
         }
-        
+
         /* Section Heading Styles */
         .section-heading {
             font-size: 2.5rem;
@@ -107,7 +119,7 @@
             font-weight: 600;
             color: var(--primary-color);
         }
-        
+
         .section-heading::after {
             content: '';
             position: absolute;
@@ -119,11 +131,12 @@
             border-radius: 2px;
             transition: width 0.4s ease;
         }
-        
-        .section-heading:hover::after, .section-active::after {
+
+        .section-heading:hover::after,
+        .section-active::after {
             width: 100%;
         }
-        
+
         /* Navbar Styling */
         .navbar {
             background: rgba(33, 37, 41, 0.95) !important;
@@ -131,11 +144,11 @@
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
-        
+
         .navbar-nav {
             margin-left: auto;
         }
-        
+
         .navbar-nav .nav-link {
             color: white !important;
             font-weight: 500;
@@ -144,7 +157,7 @@
             padding: 0.5rem 0.8rem;
             transition: all 0.3s ease;
         }
-        
+
         .navbar-nav .nav-link::after {
             content: '';
             position: absolute;
@@ -156,11 +169,11 @@
             transition: all 0.3s ease;
             transform: translateX(-50%);
         }
-        
+
         .navbar-nav .nav-link:hover::after {
             width: 80%;
         }
-        
+
         /* About Section */
         .about {
             background: linear-gradient(135deg, #a5c5d8, #80d0c7);
@@ -172,12 +185,12 @@
             overflow: hidden;
             transition: transform 0.5s ease, box-shadow 0.5s ease;
         }
-        
+
         .about:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
-        
+
         .about:before {
             content: '';
             position: absolute;
@@ -190,12 +203,12 @@
             pointer-events: none;
             transition: all 0.5s ease;
         }
-        
+
         .about:hover:before {
             top: -40%;
             left: -40%;
         }
-        
+
         #name {
             font-weight: 700;
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
@@ -208,7 +221,7 @@
             position: relative;
             z-index: 1;
         }
-        
+
         .resume .btn {
             background: linear-gradient(45deg, var(--primary-color), var(--dark-color));
             border: none;
@@ -220,12 +233,12 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .resume .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
-        
+
         .resume .btn::after {
             content: '';
             position: absolute;
@@ -236,11 +249,11 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: all 0.6s ease;
         }
-        
+
         .resume .btn:hover::after {
             left: 100%;
         }
-        
+
         /* Skills Section */
         .skill {
             border-radius: var(--border-radius);
@@ -254,14 +267,14 @@
             overflow: hidden;
             text-align: center;
         }
-        
+
         .skill:hover {
             transform: translateY(-5px) scale(1.02);
             background: var(--dark-color);
             color: white;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
-        
+
         .skill .card-title {
             font-weight: 600;
             color: var(--primary-color);
@@ -270,41 +283,41 @@
             margin-bottom: 1rem;
             transition: all var(--transition-speed) ease;
         }
-        
+
         .skill:hover .card-title {
             color: var(--secondary-color);
             border-bottom: 2px solid var(--secondary-color);
         }
-        
+
         .skill-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
             color: var(--primary-color);
             transition: all var(--transition-speed) ease;
         }
-        
+
         .skill:hover .skill-icon {
             color: var(--secondary-color);
             transform: scale(1.1);
         }
-        
+
         .skill-item {
             display: inline-block;
             margin: 0.5rem;
             text-align: center;
         }
-        
+
         .skill-item i {
             font-size: 2rem;
             margin-bottom: 0.5rem;
             display: block;
             transition: all 0.3s ease;
         }
-        
+
         .skill-item:hover i {
             transform: scale(1.2);
         }
-        
+
         /* Projects Section */
         .project {
             border-radius: var(--border-radius);
@@ -317,14 +330,14 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .project:hover {
             transform: translateY(-5px) scale(1.02);
             background: var(--dark-color);
             color: white;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
-        
+
         .proname {
             position: relative;
             padding-bottom: 0.3rem;
@@ -332,7 +345,7 @@
             color: var(--primary-color);
             font-weight: 600;
         }
-        
+
         .proname::after {
             content: '';
             position: absolute;
@@ -343,26 +356,26 @@
             background: var(--primary-color);
             transition: all var(--transition-speed) ease;
         }
-        
+
         .project:hover .proname {
             color: var(--secondary-color);
         }
-        
+
         .project:hover .proname::after {
             background: var(--secondary-color);
         }
-        
+
         .proimg {
             transition: all 0.3s ease;
             margin-left: 0.5rem;
             opacity: 0.7;
         }
-        
+
         .proimg:hover {
             transform: scale(1.2);
             opacity: 1;
         }
-        
+
         /* Contact Section */
         .con {
             border-radius: var(--border-radius);
@@ -374,34 +387,34 @@
             overflow: hidden;
             text-align: center;
         }
-        
+
         .con:hover {
             transform: translateY(-5px);
         }
-        
+
         .con h3 {
             color: var(--primary-color);
             font-weight: 600;
             margin-bottom: 1rem;
         }
-        
+
         .con a {
             margin: 0 0.5rem;
             display: inline-block;
             transition: all 0.3s ease;
         }
-        
+
         .con a:hover {
             transform: translateY(-5px);
         }
-        
+
         /* More Projects Link */
         .more-projects {
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
-        
+
         .more-projects::before {
             content: '';
             position: absolute;
@@ -412,53 +425,54 @@
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent);
             transition: all 0.5s ease;
         }
-        
+
         .more-projects:hover::before {
             top: 0;
         }
-        
+
         /* Media Queries for Responsiveness */
         @media (max-width: 768px) {
             .section-heading {
                 font-size: 1.8rem;
                 margin-left: 5%;
             }
-            
+
             .about {
                 padding: 1.5rem;
                 text-align: left;
             }
-            
+
             .about p {
                 font-size: 0.95rem;
                 line-height: 1.6;
             }
-            
+
             .about br {
                 display: none;
             }
-            
-            .skill, .project {
+
+            .skill,
+            .project {
                 padding: 1.2rem;
             }
-            
+
             .con {
                 padding: 1.5rem;
             }
-            
+
             .con h3 {
                 font-size: 1.5rem;
             }
-            
+
             .con h4 {
                 font-size: 1.2rem;
             }
-            
+
             .con p {
                 font-size: 0.9rem;
             }
         }
-        
+
         @media (max-width: 576px) {
             .section-heading {
                 font-size: 1.5rem;
@@ -466,27 +480,30 @@
                 text-align: center;
                 display: block;
             }
-            
-            #skill, #project {
+
+            #skill,
+            #project {
                 margin-left: 0;
                 text-align: center;
                 display: block;
             }
-            
+
             .about p {
                 font-size: 0.9rem;
             }
-            
-            .skill .card-title, .project .card-title {
+
+            .skill .card-title,
+            .project .card-title {
                 font-size: 1.2rem;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Stars Container -->
     <div class="stars-container" id="stars-container"></div>
-    
+
     <nav class="sticky-top">
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
             <!-- Toggle Button for Mobile -->
@@ -523,12 +540,16 @@
         <div class="container" data-aos="fade-up" data-aos-duration="1000">
             <h2 class="section-heading section-active">About Me</h2>
             <div class="about" data-aos="zoom-in" data-aos-delay="300">
-                <p>I am <span id="name">Dhanush N S</span>, a <b>Final Year Engineering Student in City Engineering College</b>, with a passion for web development and software engineering.
-                I enjoy building efficient and user-friendly applications using <b>Python and Django</b>.
-                
-                I have worked on projects like a <b>Library Management System</b> and a <b>distraction-free learning platform Called Levac</b> to enhance the learning experience. I am always eager to learn new technologies, solve problems, and improve my coding skills.
-                
-                I strive to create innovative solutions and look forward to opportunities that help me grow as a developer.</p>
+                <p>I am <span id="name">Dhanush N S</span>, a <b>Final Year Engineering Student in City Engineering
+                        College</b>, with a passion for web development and software engineering.
+                    I enjoy building efficient and user-friendly applications using <b>Python and Django</b>.
+
+                    I have worked on projects like a <b>Library Management System</b> and a <b>distraction-free learning
+                        platform Called Levac</b> to enhance the learning experience. I am always eager to learn new
+                    technologies, solve problems, and improve my coding skills.
+
+                    I strive to create innovative solutions and look forward to opportunities that help me grow as a
+                    developer.</p>
                 <div class="resume btn-group m-2">
                     <a class="btn btn-dark rounded" target="_blank" href="Dhanush_Resume.pdf">My Resume</a>
                 </div>
@@ -631,14 +652,17 @@
                     <div class="project card h-100">
                         <div class="card-body">
                             <h4 class="card-title">
-                                <span class="proname">Levac</span> 
-                                <a title="project link" class="proimg" target="_blank" href="https://github.com/Dhanush-NS/LEVAC/tree/main/finalproject">
+                                <span class="proname">Levac</span>
+                                <a title="project link" class="proimg" target="_blank"
+                                    href="https://github.com/Dhanush-NS/LEVAC/tree/main/finalproject">
                                     <img src="maximize2.png" alt="link" width="20px" height="20px">
                                 </a>
                             </h4>
                             <p>
-                                <li>My project is a <b>distraction-free learning platform</b> where users can access <b>YouTube tutorials, coding resources, and a built-in code editor.</b></li>
-                                <li>It integrates <b>Gemini-assistant</b> for doubt-solving and basic <b>Hacker Rank</b> problems for practice.</li>
+                                <li>My project is a <b>distraction-free learning platform</b> where users can access
+                                    <b>YouTube tutorials, coding resources, and a built-in code editor.</b></li>
+                                <li>It integrates <b>Gemini-assistant</b> for doubt-solving and <b>Hacker Rank</b>
+                                    problems for practice.</li>
                                 <li>Tech Stack: <b>Python, Django, HTML, CSS, Javascript, Bootstrap and MySQL.</b></li>
                             </p>
                         </div>
@@ -648,14 +672,17 @@
                     <div class="project card h-100">
                         <div class="card-body">
                             <h4 class="card-title">
-                                <span class="proname">Library Mgmt System</span> 
-                                <a title="project link" class="proimg" target="_blank" href="https://github.com/Dhanush-NS/Library-Managment-System/tree/main/Library_management_system">
+                                <span class="proname">Library Mgmt System</span>
+                                <a title="project link" class="proimg" target="_blank"
+                                    href="https://github.com/Dhanush-NS/Library-Managment-System/tree/main/Library_management_system">
                                     <img src="maximize2.png" alt="link" width="20px" height="20px">
                                 </a>
                             </h4>
                             <p>
-                                <li>A web-based <b>Library Management System</b> that enables users to <b>manage books, track borrow/return records, and handle user authentication.</b></li>
-                                <li>It features <b>book search, fine calculation</b>, and a <b>responsive UI</b> for easy access.</li>
+                                <li>A web-based <b>Library Management System</b> that enables users to <b>manage books,
+                                        track borrow/return records, and handle user authentication.</b></li>
+                                <li>It features <b>book search, fine calculation</b>, and a <b>responsive UI</b> for
+                                    easy access.</li>
                                 <li>Tech Stack: <b>Python, Django, MySQL, HTML, CSS, JavaScript, Bootstrap.</b></li>
                             </p>
                         </div>
@@ -665,15 +692,18 @@
                     <div class="project card h-100">
                         <div class="card-body">
                             <h4 class="card-title">
-                                <span class="proname">My Portfolio</span> 
-                                <a title="project link" class="proimg" target="_blank" href="https://github.com/Dhanush-NS/My-Portfolio">
+                                <span class="proname">My Portfolio</span>
+                                <a title="project link" class="proimg" target="_blank"
+                                    href="https://github.com/Dhanush-NS/My-Portfolio">
                                     <img src="maximize2.png" alt="link" width="20px" height="20px">
                                 </a>
                             </h4>
                             <p>
-                                <li>A Basic <b>Dhanush's Portfolio</b> that enables users to <b>Chat with him through email related to projects or to collaborate with him.</b></li>
-                                <li>He provided the social media links like <b>Linkedin, Instagram, Github and Youtube</b></li>
-                                <li>Tech Stack: <b>HTML, CSS.</b></li>
+                                <li>A <b>Dhanush's Portfolio</b> that enables users to <b>Chat with him through email
+                                        related to projects or to collaborate with him.</b></li>
+                                <li>He provided the social media links like <b>Linkedin, Instagram, Github and
+                                        Youtube</b></li>
+                                <li>Tech Stack: <b>HTML, CSS, Bootstrap, Javascript</b></li>
                             </p>
                         </div>
                     </div>
@@ -719,28 +749,28 @@
 
     <script>
         // Initialize AOS (Animate On Scroll)
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             AOS.init({
                 easing: 'ease-out-back',
                 once: true
             });
-            
+
             // Add active class to section headings when scrolled into view
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-link');
-            
-            window.addEventListener('scroll', function() {
+
+            window.addEventListener('scroll', function () {
                 let current = '';
-                
+
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
                     const sectionHeight = section.clientHeight;
-                    
+
                     if (pageYOffset >= (sectionTop - 200)) {
                         current = section.getAttribute('id');
                     }
                 });
-                
+
                 navLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href').substring(1) === current) {
@@ -748,44 +778,45 @@
                     }
                 });
             });
-            
+
             function createStars() {
                 const starsContainer = document.getElementById('stars-container');
                 const starCount = 200; // Increase the number of stars
-            
+
                 for (let i = 0; i < starCount; i++) {
                     const star = document.createElement('div');
                     star.className = 'star';
-            
+
                     // Random star size between 1px and 3px
                     const size = Math.random() * 2 + 1;
                     star.style.width = `${size}px`;
                     star.style.height = `${size}px`;
-            
+
                     // Random position
                     const posX = Math.random() * 100;
                     star.style.left = `${posX}%`;
-            
+
                     // Random starting position from middle to bottom
                     const posY = Math.random() * 100 + 50;
                     star.style.top = `${posY}%`;
-            
+
                     // Animation duration between 5 and 15 seconds (faster animation)
                     const duration = Math.random() * 10 + 5;
                     star.style.animationDuration = `${duration}s`;
-            
+
                     // Random delay
                     const delay = Math.random() * 10;
                     star.style.animationDelay = `${delay}s`;
-            
+
                     // Add star to container
                     starsContainer.appendChild(star);
                 }
             }
-            
+
             // Call the function to create stars
             createStars();
         });
     </script>
 </body>
+
 </html>
